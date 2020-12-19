@@ -972,12 +972,6 @@
 								
 								$response = file_get_contents($url);
 								$response = json_decode($response);
-
-								if ($response->success)
-									{
-										mail($to_email,$email_subject,$email_body,$headers);
-										echo "Message sent successfully";
-									}
 							}
 					</div>
 					<!--/ End Contact Form -->
