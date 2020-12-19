@@ -905,7 +905,6 @@
 					</div>
 				</div>
 				<div class="row">
-					<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 					<!-- Contact Form -->
 					<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-delay="0.4s">
 						<form class="form" method="post">
@@ -970,11 +969,7 @@
 								$headers = "From: $email_form \r\n";
 								$headers .= "Reply-To: $user_email \r\n";
 
-								$secretKey = "6LfDKw0aAAAAAGJg7vz8bVWPHsJkc1I9DlmH8GO2";
-								$responseKey = $_POST['g-recaptcha-response'];
-								$UserIP = $_SERVER['REMOTE_ADDR'];
-								$url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$UserIP";
-
+								
 								$response = file_get_contents($url);
 								$response = json_decode($response);
 
@@ -982,10 +977,6 @@
 									{
 										mail($to_email,$email_subject,$email_body,$headers);
 										echo "Message sent successfully";
-									}
-								else
-									{
-										echo"Invalid Captcha, Please Try Again"
 									}
 							}
 					</div>
