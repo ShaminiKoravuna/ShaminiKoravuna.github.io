@@ -946,30 +946,6 @@
 									</div>
 								</div>
 							</div>
-							<div class="status">
-							<?php
-							if(isset($_POST['submit']))
-							{
-								$User_name = $_POST['name'];
-								$phone = $_POST['phone'];
-								$user_email = $_POST['name'];
-								$user_message = $_POST['message'];
-
-								$email_form = 'noreply@shaminikoravuna.github.io';
-								$email_subject = "New Form Submission";
-								$email_body = "Name: $User_name.\n".
-										"Phone No: $phone.\n".
-										"Email id: $user_email.\n".
-										"User Message: $user_message.\n";
-
-								$to_email = "shaminik9646@gmail.com";
-								$headers = "From: $email_form \r\n";
-								$headers .= "Reply-To: $user_email \r\n";
-
-								
-								$response = file_get_contents($url);
-								$response = json_decode($response);
-							}
 						</form>
 						
 					</div>
