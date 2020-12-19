@@ -905,9 +905,10 @@
 					</div>
 				</div>
 				<div class="row">
+					<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 					<!-- Contact Form -->
 					<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-delay="0.4s">
-						<form class="form" method="post" action="post" data-netlify="true">
+						<form class="form" method="post" data-netlify="true">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
@@ -939,6 +940,9 @@
 										<input type="file" name="myfile" id="myfile" rows="6" placeholder="Upload FIle" />
 									</div>
 								</div>
+								<div class="col-md-6">
+									<div class="g-recaptcha" data-sitekey="6LfDKw0aAAAAAGJg7vz8bVWPHsJkc1I9DlmH8GO2"></div>
+								</div>	
 								<div class="col-md-12">
 									<div class="form-group button">	
 										<button type="submit" class="button primary"><i class="fa fa-send"></i>Submit</button>
@@ -946,6 +950,44 @@
 								</div>
 							</div>
 						</form>
+						<div class="status">
+							<?php
+							if(isset($_POST['submit']))
+							{
+								$User_name = $_POST['name'];
+								$phone = $_POST['phone'];
+								$user_email = $_POST['name'];
+								$user_message = $_POST['message'];
+
+								$email_form = 'noreply@shaminikoravuna.github.io';
+								$email_subject = "New Form Submission";
+								$email_body = "Name: $User_name.\n".
+										"Phone No: $phone.\n".
+										"Email id: $user_email.\n".
+										"User Message: $user_message.\n";
+
+								$to_email = "shaminik9646@gmail.com";
+								$headers = "From: $email_form \r\n";
+								$headers .= "Reply-To: $user_email \r\n";
+
+								$secretKey = "6LfDKw0aAAAAAGJg7vz8bVWPHsJkc1I9DlmH8GO2";
+								$responseKey = $_POST['g-recaptcha-response'];
+								$UserIP = $_SERVER['REMOTE_ADDR'];
+								$url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$UserIP";
+
+								$response = file_get_contents($url);
+								$response = json_decode($response);
+
+								if ($response->success)
+									{
+										mail($to_email,$email_subject,$email_body,$headers);
+										echo "Message sent successfully";
+									}
+								else
+									{
+										echo"Invalid Captcha, Please Try Again"
+									}
+							}
 					</div>
 					<!--/ End Contact Form -->
 					<!-- Contact Address -->
