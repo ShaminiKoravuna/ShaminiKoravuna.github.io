@@ -2449,7 +2449,7 @@ Version:	1.1
 #contact {
 	position: relative;
 	top: 0px;
-	z-index: 0;
+	z-index: 48;
 	margin-top: -0x;
 }
 #contact .form {
