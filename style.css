@@ -2448,9 +2448,9 @@ Version:	1.1
 =========================*/
 #contact {
 	position: relative;
-	top: 0px;
+	top: 175px;
 	z-index: 48;
-	margin-top: -0x;
+	margin-top: -175x;
 }
 #contact .form {
 	margin-top: 30px;
