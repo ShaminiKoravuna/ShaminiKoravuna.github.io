@@ -14,6 +14,6 @@ function sendEmail() {
   		path:"https://networkprogramming.files.wordpress.com/2017/11/smtpjs.png"
   	}]
   }).then(
-  	message => alert("mail sent successfully")
+  	message => alert("ShaminiKoravuna.github.io/mail-success.html")
   );
 }
